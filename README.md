@@ -63,11 +63,9 @@ For more information on the importance of a professional README for your reposit
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 [DOPING CYCLING DATA] <a name="about-project"></a>
 
-> Describe your project in 1 or 2 sentences.
-
-**[your_project__name]** is a...
+**[DOPING CYCLING DATA]**  aims to create an app that replicates the functionality of a scatterplot graph. The app is built using HTML, JavaScript, CSS, and the D3 SVG-based visualization library. It fulfills a set of user stories that include displaying a title, x-axis, and y-axis with corresponding IDs, rendering dots to represent data points, associating data values with the dots using data-xvalue and data-yvalue properties, aligning the dots with the corresponding points on the axes, displaying tick labels on the y-axis in the format of %M:%S time, displaying tick labels on the x-axis representing years, ensuring the range of x-axis and y-axis labels matches the actual data range, including a legend with descriptive text, showing tooltips with additional information when hovering over areas, and ensuring the tooltip includes a data-year property corresponding to the data-xvalue of the active area. By fulfilling these user stories, the app will pass the provided tests.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -78,21 +76,14 @@ For more information on the importance of a professional README for your reposit
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://reactjs.org/">JavaScript</a></li>
   </ul>
 </details>
 
 <details>
-  <summary>Server</summary>
+  <summary>Client</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+    <li><a href="https://reactjs.org/">JavaScript</a></li>
   </ul>
 </details>
 
@@ -102,9 +93,11 @@ For more information on the importance of a professional README for your reposit
 
 > Describe between 1-3 key features of the application.
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **[Interactive Data Visualization:]** The app allows users to explore and analyze data through an interactive scatterplot graph. Users can hover over data points to view tooltips with additional information, providing a more detailed understanding of the plotted data.
+
+- **[Axis and Label Customization:]** The app generates and displays axes (x-axis and y-axis) with corresponding tick labels. The x-axis represents years, while the y-axis displays time values in the format of %M:%S. This feature provides a clear visual representation of the data and helps users interpret the plotted values accurately.
+
+- **[Data Accuracy and Validation:]]** The app ensures that the data values associated with each dot (data-xvalue and data-yvalue) are within the range of the actual data and in the correct format. This validation ensures the accuracy of the visualization and prevents any potential data discrepancies. Additionally, the x-axis and y-axis labels are dynamically generated based on the actual data range, further enhancing the reliability of the displayed information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -126,18 +119,6 @@ For more information on the importance of a professional README for your reposit
 
 To get a local copy up and running, follow these steps.
 
-### Prerequisites
-
-In order to run this project you need:
-
-<!--
-Example command:
-
-```sh
- gem install rails
-```
- -->
-
 ### Setup
 
 Clone this repository to your desired folder:
@@ -147,58 +128,9 @@ Example commands:
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone https://github.com/carreraprogrammer/Doping-data.git
 ```
 --->
-
-### Install
-
-Install this project with:
-
-<!--
-Example command:
-
-```sh
-  cd my-project
-  gem install
-```
---->
-
-### Usage
-
-To run the project, execute the following command:
-
-<!--
-Example command:
-
-```sh
-  rails server
-```
---->
-
-### Run tests
-
-To run tests, run the following command:
-
-<!--
-Example command:
-
-```sh
-  bin/rails test test/models/article_test.rb
-```
---->
-
-### Deployment
-
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -206,31 +138,11 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
-
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FUTURE FEATURES -->
-
-## 🔭 Future Features <a name="future-features"></a>
-
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+👤 **Daniel Carrera**
+​
+- GitHub: [@carreraprogrammer](https://github.com/carreraprogrammer)
+- Twitter: [@carreraprogrammer](https://twitter.com/carreraprog)
+- LinkedIn: [Daniel Carrera] (https://www.linkedin.com/in/daniel-carrera-paz-85a917244/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -260,23 +172,7 @@ If you like this project...
 
 > Give credit to everyone who inspired your codebase.
 
-I would like to thank...
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-## ❓ FAQ (OPTIONAL) <a name="faq"></a>
-
-> Add at least 2 questions new developers would ask when they decide to use your project.
-
-- **[Question_1]**
-
-  - [Answer_1]
-
-- **[Question_2]**
-
-  - [Answer_2]
+I would like to thank my academy, my family and Freecodecamp to help me to be my best version
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
