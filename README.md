@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-<div align="center">
+<div align="right">
 
   <img src="https://github.com/carreraprogrammer/To-do-List/blob/master/carrera_logo.png?raw=true" alt="logo" width="140"  height="auto" />
   <br/>
