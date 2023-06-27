@@ -7,9 +7,9 @@
 
 </div>
 
-<div align="right">
+<div align="center">
 
-  <img src="./preview.png" alt="logo" width="140"  height="auto" />
+  <img src="./preview.png" />
   <br/>
 
 </div>
