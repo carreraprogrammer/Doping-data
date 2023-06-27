@@ -43,16 +43,12 @@ const provisionalData = [
                           }
                         ]
 
-function fromStringToTime(str) {
-const timeArr = str.split(":");
-const hours = parseInt(timeArr[0]);
-const minutes = parseInt(timeArr[1]);
+const drawChart = () => {
+  const width = 900;
+  const height = 400;
+  const padding = 50;
 
-// Create a new Date object with arbitrary date values and the extracted time
-const date = new Date(0, 0, 0, hours, minutes);
-
-// Format the time as "HH:mm"
-const formattedTime = date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-
-return formattedTime;
+  const yScale = d3.scaleLinear()
+                   .domain([d3.max(provisionalData, (d) => d.Time), d3.min(provisionalData, (d) => d.Time)])
+                   .range([height - padding, padding])
 }
