@@ -74,7 +74,7 @@ const drawChart = async () => {
      .html((d) => {
        const dopingText = d.Doping ? `<p class="info">"${d.Doping}"</p>` : '';
        return `<div class="text-container">
-                 <p class="info">${d.Name}: ${d.Nationality}</p>
+                 <b><p class="info">${d.Name}: ${d.Nationality}</p></b>
                  <p class="info">Year: ${d.Year}</p>
                  ${dopingText}
                  <p class="info">Time: ${d.Time}</p>
@@ -88,8 +88,8 @@ const drawChart = async () => {
       .text-container {
         height: 100%;
         width: 100%;
-        border: 2px solid black;
-        background-color: white;
+        border: 3px solid black;
+        background-color: #f4f5f0;
         color: black;
         display: flex;
         flex-direction: column;
@@ -97,6 +97,7 @@ const drawChart = async () => {
         border-radius: 5px
         align-items: flex-start;
         line-height: 2;
+        font-size: 18px;
       }
     `);
 
