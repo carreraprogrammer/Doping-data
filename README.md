@@ -7,6 +7,13 @@
 
 </div>
 
+<div align="right">
+
+  <img src="./preview.png" alt="logo" width="140"  height="auto" />
+  <br/>
+
+</div>
+
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
