@@ -44,14 +44,14 @@ const provisionalData = [
                         ]
 
 const drawChart = () => {
-  const width = 1200;
-  const height = 500;
-  const padding = 50;
+  const width = 1900;
+  const height = 900;
+  const padding = 100;
 
   const parseTime = d3.timeParse("%M:%S");
   
-  const yScale = d3.scaleTime()
-                   .domain(d3.extent(provisionalData, (d) => parseTime(d.Time)))
+  const yScale = d3.scaleLinear()
+                   .domain([d3.min(provisionalData, (d) => d.Seconds) - 1, d3.max(provisionalData, (d) => d.Seconds)])
                    .range([height - padding, padding]);
 
   const xScale = d3.scaleLinear()
@@ -63,13 +63,32 @@ const drawChart = () => {
                 .attr("width", width)
                 .attr("height", height);
  
-  svg.selectAll("circle")
-     .data(provisionalData)
-     .enter()
-     .append("circle")
-     .attr("cx", (d) => xScale(d.Year))
-     .attr("cy", (d) => yScale(parseTime(d.Time)))
-     .attr("r", 5);
+             svg.selectAll("circle")
+                .data(provisionalData)
+                .enter()
+                .append("circle")
+                .attr("cx", (d) => xScale(d.Year))
+                .attr("cy", (d) => yScale(d.Seconds))
+                .attr("r", 5);
+
+  const xAxis = d3.axisBottom(xScale);
+  const yAxis = d3.axisLeft(yScale)
+                  .tickFormat((d) => {
+                    const minutes = Math.floor(d / 60);
+                    const seconds = d % 60;
+                    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                  });
+
+
+  svg.append("g")
+     .attr("transform", "translate(0," + (height - padding) + ")")
+     .call(xAxis);
+  
+  svg.append("g")
+     .attr("transform", "translate(" + padding + ",0)")
+     .call(yAxis);
 }
 
 drawChart();
+
+
