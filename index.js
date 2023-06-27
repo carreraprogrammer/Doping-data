@@ -1,75 +1,40 @@
-// Add provisional data
+const showTag = () => {
+    let dots = document.getElementsByClassName("dot");
+    let tags = document.getElementsByClassName("not-show");
 
-const provisionalData = [
-                          {
-                            "Time": "36:50",
-                            "Place": 1,
-                            "Seconds": 2210,
-                            "Name": "Marco Pantani",
-                            "Year": 1995,
-                            "Nationality": "ITA",
-                            "Doping": "Alleged drug use during 1995 due to high hematocrit levels",
-                            "URL": "https://en.wikipedia.org/wiki/Marco_Pantani#Alleged_drug_use"
-                          },
-                          {
-                            "Time": "36:55",
-                            "Place": 2,
-                            "Seconds": 2215,
-                            "Name": "Marco Pantani",
-                            "Year": 1997,
-                            "Nationality": "ITA",
-                            "Doping": "Alleged drug use during 1997 due to high hermatocrit levels",
-                            "URL": "https://en.wikipedia.org/wiki/Marco_Pantani#Alleged_drug_use"
-                          },
-                          {
-                            "Time": "37:15",
-                            "Place": 3,
-                            "Seconds": 2235,
-                            "Name": "Marco Pantani",
-                            "Year": 1994,
-                            "Nationality": "ITA",
-                            "Doping": "Alleged drug use during 1994 due to high hermatocrit levels",
-                            "URL": "https://en.wikipedia.org/wiki/Marco_Pantani#Alleged_drug_use"
-                          },
-                          {
-                            "Time": "37:36",
-                            "Place": 4,
-                            "Seconds": 2256,
-                            "Name": "Lance Armstrong",
-                            "Year": 2004,
-                            "Nationality": "USA",
-                            "Doping": "2004 Tour de France title stripped by UCI in 2012",
-                            "URL": "https://en.wikipedia.org/wiki/History_of_Lance_Armstrong_doping_allegations"
-                          }
-                        ]
+    Array.from(dots).forEach((dot, i) => {
+        dot.addEventListener("mouseover", () => {
+          let tag = tags[i]
+          tag.classList.add("show")
+        })
 
-const drawChart = () => {
-  const width = 1900;
-  const height = 900;
-  const padding = 100;
+        dot.addEventListener("mouseout", () => {
+          let tag = tags[i]
+          tag.classList.remove("show")
+        })
+    })  
+}
 
-  const parseTime = d3.timeParse("%M:%S");
+const drawChart = async () => {
+
+  const response = await fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json');
+  const data = await response.json();
+  const width = 1400;
+  const height = 800;
+  const padding = 50;
   
   const yScale = d3.scaleLinear()
-                   .domain([d3.min(provisionalData, (d) => d.Seconds) - 1, d3.max(provisionalData, (d) => d.Seconds)])
+                   .domain([d3.max(data, (d) => d.Seconds) + 5, d3.min(data, (d) => d.Seconds)])
                    .range([height - padding, padding]);
 
   const xScale = d3.scaleLinear()
-                   .domain([d3.min(provisionalData, (d) => d.Year), d3.max(provisionalData, (d) => d.Year)])
+                   .domain([1993, d3.max(data, (d) => d.Year)])
                    .range([padding, width - padding]);
 
   const svg = d3.select('#dot-chart')
                 .append("svg")
                 .attr("width", width)
                 .attr("height", height);
- 
-             svg.selectAll("circle")
-                .data(provisionalData)
-                .enter()
-                .append("circle")
-                .attr("cx", (d) => xScale(d.Year))
-                .attr("cy", (d) => yScale(d.Seconds))
-                .attr("r", 5);
 
   const xAxis = d3.axisBottom(xScale);
   const yAxis = d3.axisLeft(yScale)
@@ -87,6 +52,55 @@ const drawChart = () => {
   svg.append("g")
      .attr("transform", "translate(" + padding + ",0)")
      .call(yAxis);
+
+  svg.selectAll("circle")
+     .data(data)
+     .enter()
+     .append("circle")
+     .attr("cx", (d) => xScale(d.Year))
+     .attr("cy", (d) => yScale(d.Seconds))
+     .attr("r", 8)
+     .attr("class", "dot")
+
+     svg.selectAll("foreignObject")
+     .data(data)
+     .enter()
+     .append("foreignObject")
+     .attr("x", (d) => xScale(d.Year) > width / 2 ? xScale(d.Year) - 300 : xScale(d.Year))
+     .attr("y", (d) => yScale(d.Seconds) > height / 2 ? yScale(d.Seconds) - 200 : yScale(d.Seconds))
+     .attr("width", 300)
+     .attr("height", 150)
+     .html((d) => {
+       const dopingText = d.Doping ? `<p class="info">"${d.Doping}"</p>` : '';
+       return `<div class="text-container">
+                 <p class="info">${d.Name}: ${d.Nationality}</p>
+                 <p class="info">Year: ${d.Year}</p>
+                 ${dopingText}
+                 <p class="info">Time: ${d.Time}</p>
+               </div>`;
+     })
+     .attr("class", "not-show");
+
+  d3.select("svg")
+    .append("style")
+    .text(`
+      .text-container {
+        height: 100%;
+        width: 100%;
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 5px
+        align-items: flex-start;
+        line-height: 2;
+      }
+    `);
+
+     showTag();
+     
 }
 
 drawChart();

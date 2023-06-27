@@ -50,5 +50,36 @@ q:before, q:after {
 }
 
 #title {
-  font-size: rem;
+  font-size: 3rem;
+}
+
+.dot {
+  cursor: pointer;
+  fill: purple;
+}
+
+.dot:hover {
+  stroke: rgb(4, 231, 4);
+  stroke-width: 5px;
+}
+
+.not-show {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.info {
+  width: 100%;
+  text-align: left;
+  padding-left: 8px;
+}
+
+.link {
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  border: 1px solid black;
 }
