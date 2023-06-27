@@ -70,7 +70,7 @@ const drawChart = async () => {
      .attr("x", (d) => xScale(d.Year) > width / 2 ? xScale(d.Year) - 300 : xScale(d.Year))
      .attr("y", (d) => yScale(d.Seconds) > height / 2 ? yScale(d.Seconds) - 200 : yScale(d.Seconds))
      .attr("width", 300)
-     .attr("height", 150)
+     .attr("height", 200)
      .html((d) => {
        const dopingText = d.Doping ? `<p class="info">"${d.Doping}"</p>` : '';
        return `<div class="text-container">
@@ -114,6 +114,34 @@ const drawChart = async () => {
        .attr("text-anchor", "middle")
        .text("Year")
        .attr("class", "axis-name");
+
+    svg.append("text")
+       .attr("x", width - 100)
+       .attr("y", height/2)
+       .attr("text-anchor", "end")
+       .text("No doping allegations")
+
+    svg.append("text")
+       .attr("x", width - 100)
+       .attr("y", height/2 - 30)
+       .attr("text-anchor", "end")
+       .text("Riders with doping allegations")
+
+    svg.append("rect")
+       .attr("x", width - 80)
+       .attr("y", height/2 - 15)
+       .attr("width", 20)
+       .attr("height", 20)
+       .attr("fill", "red")
+       .attr("stroke", "black")
+
+    svg.append("rect")
+       .attr("x", width - 80)
+       .attr("y", height/2 - 45)
+       .attr("width", 20)
+       .attr("height", 20)
+       .attr("fill", "green")
+       .attr("stroke", "black")
 
      showTag();
      

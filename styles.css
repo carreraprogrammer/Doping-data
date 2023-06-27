@@ -20,7 +20,10 @@ body {
 /* Custom Styles */
 #dot-chart {
   text-align: center;
-  margin: 24px; /* Add margin to separate the SVG from the body */
+  margin: 24px;
+  background-color: white;
+  padding-left: 50px;
+  padding-right: 50px; /* Add margin to separate the SVG from the body */
 }
 
 #title {
