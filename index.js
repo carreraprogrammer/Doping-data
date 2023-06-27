@@ -51,4 +51,8 @@ const drawChart = () => {
   const yScale = d3.scaleLinear()
                    .domain([d3.max(provisionalData, (d) => d.Time), d3.min(provisionalData, (d) => d.Time)])
                    .range([height - padding, padding])
+
+  const xScale = d3.scaleLinear()
+                   .domain([d3.min(provisionalData, (d) => d.Year), d3.max(provisionalData, (d) => d.Year )])
+                   .range([padding, width - padding])
 }
