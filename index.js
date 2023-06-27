@@ -44,22 +44,32 @@ const provisionalData = [
                         ]
 
 const drawChart = () => {
-  const width = 900;
-  const height = 400;
+  const width = 1200;
+  const height = 500;
   const padding = 50;
 
-  const yScale = d3.scaleLinear()
-                   .domain([d3.max(provisionalData, (d) => d.Time), d3.min(provisionalData, (d) => d.Time)])
-                   .range([height - padding, padding])
+  const parseTime = d3.timeParse("%M:%S");
+  
+  const yScale = d3.scaleTime()
+                   .domain(d3.extent(provisionalData, (d) => parseTime(d.Time)))
+                   .range([height - padding, padding]);
 
   const xScale = d3.scaleLinear()
-                   .domain([d3.min(provisionalData, (d) => d.Year), d3.max(provisionalData, (d) => d.Year )])
-                   .range([padding, width - padding])
+                   .domain([d3.min(provisionalData, (d) => d.Year), d3.max(provisionalData, (d) => d.Year)])
+                   .range([padding, width - padding]);
 
   const svg = d3.select('#dot-chart')
                 .append("svg")
                 .attr("width", width)
                 .attr("height", height);
+ 
+  svg.selectAll("circle")
+     .data(provisionalData)
+     .enter()
+     .append("circle")
+     .attr("cx", (d) => xScale(d.Year))
+     .attr("cy", (d) => yScale(parseTime(d.Time)))
+     .attr("r", 5);
 }
 
-drawChart()
+drawChart();
