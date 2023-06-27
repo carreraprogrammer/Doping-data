@@ -19,9 +19,9 @@ const drawChart = async () => {
 
   const response = await fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json');
   const data = await response.json();
-  const width = 1400;
-  const height = 800;
-  const padding = 50;
+  const width = 1300;
+  const height = 900;
+  const padding = 100;
   
   const yScale = d3.scaleLinear()
                    .domain([d3.max(data, (d) => d.Seconds) + 5, d3.min(data, (d) => d.Seconds)])
@@ -61,6 +61,7 @@ const drawChart = async () => {
      .attr("cy", (d) => yScale(d.Seconds))
      .attr("r", 8)
      .attr("class", "dot")
+     .attr("class", (d) => d.Doping ? "dot red" : "dot green")
 
      svg.selectAll("foreignObject")
      .data(data)
@@ -98,6 +99,21 @@ const drawChart = async () => {
         line-height: 2;
       }
     `);
+
+    svg.append("text")
+       .attr("transform", "rotate(-90)")
+       .attr("x", -height / 2)
+       .attr("y", padding / 2)
+       .attr("text-anchor", "middle")
+       .text("Time (minutes:seconds)")
+       .attr("class", "axis-name");
+
+    svg.append("text")
+       .attr("x", width / 2)
+       .attr("y", height - padding/4 )
+       .attr("text-anchor", "middle")
+       .text("Year")
+       .attr("class", "axis-name");
 
      showTag();
      

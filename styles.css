@@ -1,20 +1,10 @@
 /* Reset CSS */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
+  box-sizing: border-box;
 }
 
 body {
@@ -22,45 +12,40 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw
+  width: 100vw;
+  font-family: 'Helvetica', sans-serif; /* Beautiful font */
+  background-color: #f4f5f0; /* Beautiful background color */
 }
 
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-
-/* Border Box */
-* {
-  box-sizing: border-box;
-}
-
+/* Custom Styles */
 #dot-chart {
   text-align: center;
+  margin: 24px; /* Add margin to separate the SVG from the body */
 }
 
 #title {
   font-size: 3rem;
+  margin-top: 50px;
+  margin-bottom: 12px;
+}
+
+#subtitle {
+  margin-bottom: 12px;
 }
 
 .dot {
   cursor: pointer;
-  fill: purple;
+  stroke: black;
 }
 
-.dot:hover {
+.green:hover {
   stroke: rgb(4, 231, 4);
   stroke-width: 5px;
+}
+
+.red:hover {
+  stroke: rgb(216, 231, 4);
+  stroke-width: 5px; 
 }
 
 .not-show {
@@ -82,4 +67,36 @@ q:before, q:after {
   width: 100%;
   z-index: 1000;
   border: 1px solid black;
+}
+
+.red {
+  fill: red;
+}
+
+.green {
+  fill: green;
+}
+
+.axis-name {
+  font-size: 24px;
+}
+
+.text-container {
+  height: 100%;
+  width: 100%;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  align-items: flex-start;
+  line-height: 2;
+}
+
+svg {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-bottom: 50px;
 }
