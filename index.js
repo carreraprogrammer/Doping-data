@@ -55,4 +55,11 @@ const drawChart = () => {
   const xScale = d3.scaleLinear()
                    .domain([d3.min(provisionalData, (d) => d.Year), d3.max(provisionalData, (d) => d.Year )])
                    .range([padding, width - padding])
+
+  const svg = d3.select('#dot-chart')
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
 }
+
+drawChart()
