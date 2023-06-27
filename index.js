@@ -42,3 +42,17 @@ const provisionalData = [
                             "URL": "https://en.wikipedia.org/wiki/History_of_Lance_Armstrong_doping_allegations"
                           }
                         ]
+
+function fromStringToTime(str) {
+const timeArr = str.split(":");
+const hours = parseInt(timeArr[0]);
+const minutes = parseInt(timeArr[1]);
+
+// Create a new Date object with arbitrary date values and the extracted time
+const date = new Date(0, 0, 0, hours, minutes);
+
+// Format the time as "HH:mm"
+const formattedTime = date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+return formattedTime;
+}
